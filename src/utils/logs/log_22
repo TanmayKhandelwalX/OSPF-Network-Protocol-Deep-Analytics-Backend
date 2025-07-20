@@ -1,0 +1,55 @@
+| 2025-03-19T05:45:24.132505+00:00 switch hpe-routing[1383]: Event|6401|LOG_INFO|AMM|1/1|VRF with vrf name default is configured in the switch
+| 2025-03-19T05:49:15.530017+00:00 switch hpe-routing[1383]: Event|2411|LOG_INFO|AMM|1/1|Distance External 110, Inter-area 110, and Intra-area 110 applied to OSPF process 1 in default VRF
+| 2025-03-19T05:49:17.842623+00:00 switch hpe-routing[1383]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.10.1( area ID 0.0.0.1) changed from Down to Waiting, input: IF_ELIG_BCAST_UP
+| 2025-03-19T05:49:18.145570+00:00 switch hpe-routing[1383]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.10.1( area ID 0.0.0.1): Down -&gt; Init
+| 2025-03-19T05:49:28.142327+00:00 switch hpe-routing[1383]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.10.1( area ID 0.0.0.1): Init -&gt; Two-way
+| 2025-03-19T05:49:57.840904+00:00 switch hpe-routing[1383]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.10.1( area ID 0.0.0.1) changed from Waiting to Other DR, input: IF_DR_OTHER
+| 2025-03-19T05:49:57.841040+00:00 switch hpe-routing[1383]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.10.1( area ID 0.0.0.1): Two-way -&gt; Exstart
+| 2025-03-19T05:49:58.142498+00:00 switch hpe-routing[1383]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.10.1( area ID 0.0.0.1): Exstart -&gt; Exchange
+| 2025-03-19T05:49:58.144025+00:00 switch hpe-routing[1383]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.10.1( area ID 0.0.0.1): Exchange -&gt; Loading
+| 2025-03-19T05:49:58.145029+00:00 switch hpe-routing[1383]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.10.1( area ID 0.0.0.1): Loading -&gt; Full
+| 2025-03-19T05:50:08.142000+00:00 switch hpe-routing[1383]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.10.1( area ID 0.0.0.1) changed from Other DR to BDR, input: IF_BACKUP_LOCAL</div></td></tr>
+| 2025-03-19T05:45:26.540474+00:00 switch hpe-routing[1322]: Event|6401|LOG_INFO|AMM|1/1|VRF with vrf name default is configured in the switch
+| 2025-03-19T05:49:15.769242+00:00 switch hpe-routing[1322]: Event|2411|LOG_INFO|AMM|1/1|Distance External 110, Inter-area 110, and Intra-area 110 applied to OSPF process 1 in default VRF
+| 2025-03-19T05:49:18.140852+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.10.2( area ID 0.0.0.1) changed from Down to Waiting, input: IF_ELIG_BCAST_UP
+| 2025-03-19T05:49:18.433530+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.2( area ID 0.0.0.1) changed from Down to Waiting, input: IF_ELIG_BCAST_UP
+| 2025-03-19T05:49:18.747733+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Down -&gt; Init
+| 2025-03-19T05:49:27.842390+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 1.1.1.1 on IP addr 10.10.10.2( area ID 0.0.0.1): Down -&gt; Init
+| 2025-03-19T05:49:27.842537+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 1.1.1.1 on IP addr 10.10.10.2( area ID 0.0.0.1): Init -&gt; Two-way
+| 2025-03-19T05:49:28.741986+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Init -&gt; Two-way
+| 2025-03-19T05:49:58.141239+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.10.2( area ID 0.0.0.1) changed from Waiting to DR, input: IF_DR_LOCAL
+| 2025-03-19T05:49:58.141352+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 1.1.1.1 on IP addr 10.10.10.2( area ID 0.0.0.1): Two-way -&gt; Exstart
+| 2025-03-19T05:49:58.143200+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 1.1.1.1 on IP addr 10.10.10.2( area ID 0.0.0.1): Exstart -&gt; Exchange
+| 2025-03-19T05:49:58.144705+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 1.1.1.1 on IP addr 10.10.10.2( area ID 0.0.0.1): Exchange -&gt; Full
+| 2025-03-19T05:49:58.432734+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.2( area ID 0.0.0.1) changed from Waiting to Other DR, input: IF_DR_OTHER
+| 2025-03-19T05:49:58.432924+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Two-way -&gt; Exstart
+| 2025-03-19T05:49:58.742631+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Exstart -&gt; Exchange
+| 2025-03-19T05:49:58.744279+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Exchange -&gt; Loading
+| 2025-03-19T05:49:58.745322+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Loading -&gt; Full
+| 2025-03-19T05:49:59.319024+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Full -&gt; Down
+| 2025-03-19T05:49:59.319150+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.2( area ID 0.0.0.1) changed from Other DR to Down, input: IF_INTERFACE_DOWN
+| 2025-03-19T05:49:59.319201+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.2( area ID 0.0.0.1) changed from Down to Other DR, input: IF_BCAST_UP
+| 2025-03-19T05:50:44.024638+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.2( area ID 0.0.0.1) changed from Other DR to Down, input: IF_INTERFACE_DOWN
+| 2025-03-19T05:50:44.024722+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.2( area ID 0.0.0.1) changed from Down to Waiting, input: IF_ELIG_BCAST_UP
+| 2025-03-19T05:50:48.741874+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Down -&gt; Init
+| 2025-03-19T05:50:48.741983+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Init -&gt; Two-way
+| 2025-03-19T05:50:48.742206+00:00 switch hpe-routing[1322]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.2( area ID 0.0.0.1) changed from Waiting to BDR, input: IF_BACKUP_LOCAL
+| 2025-03-19T05:50:48.742422+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Two-way -&gt; Exstart
+| 2025-03-19T05:50:48.744142+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Exstart -&gt; Exchange
+| 2025-03-19T05:50:48.745188+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Exchange -&gt; Loading
+| 2025-03-19T05:50:48.746247+00:00 switch hpe-routing[1322]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 3.3.3.3 on IP addr 10.10.20.2( area ID 0.0.0.1): Loading -&gt; Full</div></td></tr>
+| 2025-03-19T05:45:27.746685+00:00 switch hpe-routing[1346]: Event|6401|LOG_INFO|AMM|1/1|VRF with vrf name default is configured in the switch
+| 2025-03-19T05:49:16.008037+00:00 switch hpe-routing[1346]: Event|2411|LOG_INFO|AMM|1/1|Distance External 110, Inter-area 110, and Intra-area 110 applied to OSPF process 1 in default VRF
+| 2025-03-19T05:49:18.741359+00:00 switch hpe-routing[1346]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.3( area ID 0.0.0.1) changed from Down to Waiting, input: IF_ELIG_BCAST_UP
+| 2025-03-19T05:49:28.434320+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Down -&gt; Init
+| 2025-03-19T05:49:28.434473+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Init -&gt; Two-way
+| 2025-03-19T05:49:58.740983+00:00 switch hpe-routing[1346]: Event|2402|LOG_INFO|AMM|1/1|Interface IP addr 10.10.20.3( area ID 0.0.0.1) changed from Waiting to DR, input: IF_DR_LOCAL
+| 2025-03-19T05:49:58.741087+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Two-way -&gt; Exstart
+| 2025-03-19T05:49:58.743348+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Exstart -&gt; Exchange
+| 2025-03-19T05:49:58.744906+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Exchange -&gt; Full
+| 2025-03-19T05:50:38.744991+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Full -&gt; Down
+| 2025-03-19T05:50:44.027401+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Down -&gt; Init
+| 2025-03-19T05:50:48.743500+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Init -&gt; Two-way
+| 2025-03-19T05:50:48.743609+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Two-way -&gt; Exstart
+| 2025-03-19T05:50:48.744643+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Exstart -&gt; Exchange
+| 2025-03-19T05:50:48.745769+00:00 switch hpe-routing[1346]: Event|2401|LOG_INFO|AMM|1/1|AdjChg: Nbr  rtr ID 2.2.2.2 on IP addr 10.10.20.3( area ID 0.0.0.1): Exchange -&gt; Full</div></td></tr>

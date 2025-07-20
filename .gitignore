@@ -1,0 +1,6 @@
+node_modules
+src/utils/avgtime.js
+.env
+src/constants.js
+dump.rdb
+.DS_Store
