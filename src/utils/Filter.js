@@ -6,9 +6,9 @@ import readline from 'readline';
 
 const __dirname = import.meta.dirname;
 const inputFilePath =__dirname+"/logs/log_";
-const ipv4Regex = "\\b([0-9]{1,3}\\.){3}([0-9]{1,3}){1}\\b";
-const ipv6Regex = "\\b([0-9a-fA-F]{1,4}:){1}(:[0-9a-fA-F]{1,4}){4}\\b";
-const combinedRegex = ipv4Regex + "|" + ipv6Regex;
+const ipv4RegexString = "\\b([0-9]{1,3}\\.){3}([0-9]{1,3}){1}\\b";
+const ipv6RegexString = "\\b([0-9a-fA-F]{1,4}:){1}(:[0-9a-fA-F]{1,4}){4}\\b";
+const combinedRegex = ipv4RegexString + "|" + ipv6RegexString;
 const outputFilePath = __dirname+"/filteredOutput.csv";
 const writeStream = createWriteStream(outputFilePath,{encoding:'utf8'});
 
@@ -23,7 +23,7 @@ function extract(line){
     if(line.indexOf('AdjChg:') !== -1) {
         let dateTime = line.slice(2,28);
         let regexCombined = new RegExp(combinedRegex,'g');
-        let regexIPv4 = new RegExp(ipv4Regex,'g');
+        let regexIPv4 = new RegExp(ipv4RegexString,'g');
         const matches = line.match(regexCombined);
         let IPversion = (regexIPv4.test(matches[1]) ? "IPv4" : "IPv6");
 
@@ -48,7 +48,7 @@ function extract(line){
     else if(line.indexOf("IF_ELIG_BCAST_UP")!==-1){
         let dateTime = line.slice(2,28);
         let regexCombined = new RegExp(combinedRegex,'g');
-        let regexIPv4 = new RegExp(ipv4Regex,'g');
+        let regexIPv4 = new RegExp(ipv4RegexString,'g');
         const matches = line.match(regexCombined);
         if(!matches || matches.length !== 2) return 0;
         let IPversion = (regexIPv4.test(matches[0]) ? "IPv4" : "IPv6");
@@ -63,7 +63,7 @@ function extract(line){
     else if(line.indexOf("IF_INTERFACE_DOWN")!==-1){
         let dateTime = line.slice(2,28);
         let regexCombined = new RegExp(combinedRegex,'g');
-        let regexIPv4 = new RegExp(ipv4Regex,'g');
+        let regexIPv4 = new RegExp(ipv4RegexString,'g');
         const matches = line.match(regexCombined);
         if(!matches || matches.length !== 2) return 0;
         let IPversion = (regexIPv4.test(matches[0]) ? "IPv4" : "IPv6");

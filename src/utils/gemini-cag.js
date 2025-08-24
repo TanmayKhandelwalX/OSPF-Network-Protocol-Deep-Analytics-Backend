@@ -12,8 +12,11 @@ let writeStream = fs.createWriteStream(outputFilePath,{encoding:'utf8'});
 
 async function calculateDataFromDBForLLM() {
     let data = [];
-    const keys = await localDB.keys('AdjChg|*');
-    const values = await Promise.all(keys.map(key => localDB.get(key)));
+    let keys = await localDB.hkeys('HASHMAP');
+    keys = keys.map((key) => {
+        if(key.indexOf("AdjChg|")!==-1) return key;
+    });
+    const values = await Promise.all(keys.map(key => localDB.hget('HASHMAP',key)));
     values.forEach((val)=>{
         val = JSON.parse(val);
         data.push(val);
@@ -105,6 +108,7 @@ export async function askLLM(userQuery){
     const context = await calculateDataFromDBForLLM();
     const llmQuery = `Latest Data:\n ${context}\n Use the above Data as well as All Knowledge about OSPF Networks in general to Provide Accurate and Precise Answer to the Following Question : \n 
                     ${userQuery} \n`;
+
     try{
         writeStream.write(llmQuery);
         

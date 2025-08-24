@@ -10,7 +10,7 @@ import { server } from "./server.js";
 import Redis from 'ioredis';
 
 
-export let localDB = new Redis();
+export let localDB = new Redis(process.env.REDIS_URI);
 
 async function calculationForBlockOfLines(Block) {
     await begin(Block);    
@@ -18,7 +18,7 @@ async function calculationForBlockOfLines(Block) {
 
 async function generateRandomNumberOfLinesAndCalculate(){
     let prevMilliSeconds = Date.now();
-    let limit = 1;
+    let limit = 2;
     for(let i = 0;i<limit;i++){
         let Block = makeNewlines(prevMilliSeconds);
         await calculationForBlockOfLines(Block);     
@@ -29,13 +29,13 @@ async function generateRandomNumberOfLinesAndCalculate(){
 async function main(){
     try{
         await connectDB();
-        await dbFunctions.DeleteCollection(DB_NAME,COLLECTION_NAME);//only for debugging purposes and reseting db
+        await dbFunctions.DeleteCollection(DB_NAME,COLLECTION_NAME); //only for debugging purposes and reseting db
         const data = await client.db(DB_NAME).collection(COLLECTION_NAME).find({}).toArray();
         await localDB.flushdb();
         data.forEach(async (val)=> {
             val.oldCalculation = true;
             const key = "AdjChg|"+JSON.stringify(val.ids);
-            await localDB.set(key,JSON.stringify(val));
+            await localDB.hset('HASHMAP',key,JSON.stringify(val));
         });
         await generateRandomNumberOfLinesAndCalculate();
        

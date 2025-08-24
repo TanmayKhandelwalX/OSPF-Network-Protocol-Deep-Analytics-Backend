@@ -17,7 +17,7 @@ function dateToISOLikeButLocal(date) {
     return iso;
 }
 function setNewDate(row,prev,ck){
-    const delay = (ck ? Math.round(Math.random()*10000) : Math.round(Math.random()*1000));
+    const delay = (ck ? Math.round(Math.random()*100) : Math.round(Math.random()*100));
     const newMs = prev.ms + delay;
     row.dateTime = dateToISOLikeButLocal(new Date(newMs));
     prev.ms = newMs;
@@ -60,20 +60,21 @@ export function makeNewlines(){
                 upRow.type = "IF_ELIG_BCAST_UP";
             }
             const key = `${row.nbrID.trim()} | ${row.areaID.trim()}`;
-            if(ifcnt%5!==0 && mp.has(key)) {
-                mp.get(key).forEach((rid) => {
-                    let log = {...row};
-                    log.type = "AdjChg";
-                    log.routerID = rid;
-                    log.initialState = "Exchange";
-                    log.finalState = "Full";
-                    newData.push(setNewDate(log,prev,1));
-                });
-               
-            }
-            newData.push(setNewDate(downRow,prev,0));
             
-            if(ifcnt%5!==0 && mp.has(key)) {
+            newData.push(setNewDate(downRow,prev,0));
+
+            
+            if(mp.has(key)) {
+                for(let i=1;i<=5;i++) {
+                    mp.get(key).forEach((rid) => {
+                        let log = {...row};
+                        log.type = "AdjChg";
+                        log.routerID = rid;
+                        log.initialState = "Exchange";
+                        log.finalState = "Full";
+                        newData.push(setNewDate(log,prev,1));
+                    });
+                }
                 mp.get(key).forEach((rid) => {
                     let log = {...row};
                     log.type = "AdjChg";
@@ -85,23 +86,18 @@ export function makeNewlines(){
                
             }
             newData.push(setNewDate(upRow,prev));
-            if(ifcnt%5!==0 && mp.has(key)) {
-                mp.get(key).forEach((rid) => {
-                    let log = {...row};
-                    log.type = "AdjChg";
-                    log.routerID = rid;
-                    log.initialState = "Down";
-                    log.finalState = "Init";
-                    newData.push(setNewDate(log,prev,1));
-                });
-                mp.get(key).forEach((rid) => {
-                    let log = {...row};
-                    log.type = "AdjChg";
-                    log.routerID = rid;
-                    log.initialState = "Exchange";
-                    log.finalState = "Full";
-                    newData.push(setNewDate(log,prev,1));
-                });
+            if(mp.has(key)) {
+                const states = ["Down","Init","Two-way","Exstart","Exchange","Loading","Full"];
+                for(let i=0;i<=5;i++){
+                    mp.get(key).forEach((rid) => {
+                        let log = {...row};
+                        log.type = "AdjChg";
+                        log.routerID = rid;
+                        log.initialState = states[i];
+                        log.finalState = states[i+1];
+                        newData.push(setNewDate(log,prev,1));
+                    });
+                }
             }
         }
     });

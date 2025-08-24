@@ -38,9 +38,9 @@ async function delay(dateTimeLine){
 async function CalculationForOneRow(currRow) {
     try {
         if(currRow.type !==  "AdjChg") {
-            const key = `InterfaceChg|${currRow.nbrID} | ${currRow.areaID}`;
-            if(currRow.type === "IF_ELIG_BCAST_UP") await localDB.set(key,"UP");
-            else await localDB.set(key,"DOWN");
+            const key = `InterfaceChg|${currRow.nbrID}|${currRow.areaID}`;
+            if(currRow.type === "IF_ELIG_BCAST_UP") await localDB.hset('HASHMAP',key,"UP");
+            else await localDB.hset('HASHMAP',key,"DOWN");
             return 0;
         }
         let IDs = {
@@ -50,7 +50,7 @@ async function CalculationForOneRow(currRow) {
             IPversion: currRow.IPversion,
         };
         const key = "AdjChg|"+JSON.stringify(IDs);
-        if (! (await localDB.exists(key))){
+        if (! (await localDB.hexists('HASHMAP',key))){
             
             let firstRow = new Entries(IDs);
             firstRow.currentDateAndTime = currRow.dateTime;
@@ -60,10 +60,10 @@ async function CalculationForOneRow(currRow) {
                 firstRow.initToFullTrack = true;
             }
             else firstRow.initToFullTrack = false;
-            await localDB.set(key,JSON.stringify(firstRow));
+            await localDB.hset('HASHMAP',key,JSON.stringify(firstRow));
             return firstRow;
         }
-        let routerPreviousInfo = JSON.parse(await localDB.get(key));
+        let routerPreviousInfo = JSON.parse(await localDB.hget('HASHMAP',key));
         
         let chk1 = checkIfInconsistent(currRow, routerPreviousInfo);
 
@@ -76,7 +76,7 @@ async function CalculationForOneRow(currRow) {
             }
             else routerPreviousInfo.initToFullTrack = false;
             routerPreviousInfo.oldCalculation = false;
-            await localDB.set(key,JSON.stringify(routerPreviousInfo));
+            await localDB.hset('HASHMAP',key,JSON.stringify(routerPreviousInfo));
             return routerPreviousInfo;
         }
 
@@ -121,7 +121,7 @@ async function CalculationForOneRow(currRow) {
             if(dataPointXInitToFull > previousAvgInitToFull) routerPreviousInfo.numberOfTimesInitToFullTimeGoesAboveMeanInitToFullTime++;
             routerPreviousInfo.initToFullTrack = false;
         }
-        await localDB.set(key,JSON.stringify(routerPreviousInfo));
+        await localDB.hset('HASHMAP',key,JSON.stringify(routerPreviousInfo));
         return routerPreviousInfo;
     }
     catch (err) {
@@ -240,9 +240,9 @@ async function setStatusAndTimeLeft(row,currentDateAndTime){
     }
 
   
-    const key = `InterfaceChg|${row.ids.nbrID} | ${row.ids.areaID}`;
-    if(await localDB.exists(key)){
-        if(await localDB.get(key) === "DOWN"){
+    const key = `InterfaceChg|${row.ids.nbrID}|${row.ids.areaID}`;
+    if(await localDB.hexists('HASHMAP',key)){
+        if(await localDB.hget('HASHMAP',key) === "DOWN"){
             if(state === "Down") row.status = "Red";
             else if(state === "Full") row.status = "Yellow";
             row.event = "Interface Down";
@@ -280,8 +280,11 @@ async function setStatusAndTimeLeft(row,currentDateAndTime){
 export async function updateAllRouters(currentDateAndTime){
     try{
         let queries = [];
-        const keys = await localDB.keys('AdjChg|*');
-        const values = await Promise.all(keys.map(key => localDB.get(key)));
+        let keys = await localDB.hkeys('HASHMAP');
+        keys = keys.filter((key) => {
+            return (key.indexOf("AdjChg|")!==-1);
+        });
+        const values = await Promise.all(keys.map(key => localDB.hget('HASHMAP',key)));
         for(let val of values){
             val = JSON.parse(val);
             if (val._id) delete val._id;
